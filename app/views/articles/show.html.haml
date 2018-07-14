@@ -1,6 +1,8 @@
 %h1= @article.title
 %p= @article.content
 
-= link_to "Back", root_path
-= link_to "Edit", edit_article_path(@article)
-= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}
+.btn-group
+  %button= link_to "Back", root_path
+  - if user_signed_in?
+    %button= link_to "Edit", edit_article_path(@article)
+    %button= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}
